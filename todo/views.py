@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.dateparse import parse_datetime
 from django.utils.timezone import make_aware
 
@@ -38,3 +38,12 @@ def detail(request, task_id):
         "task": task,
     }
     return render(request, "todo/detail.html", context)
+
+
+def delete(request, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+    except Task.DoesNotExist:
+        raise Http404("Task does not exist")
+    task.delete()
+    return redirect(index)
