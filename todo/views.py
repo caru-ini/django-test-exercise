@@ -77,3 +77,17 @@ def close(request, task_id):
     task.completed = True
     task.save()
     return redirect(index)
+    
+
+def task_list(request):
+    query = request.GET.get('q')
+
+    tasks = Task.objects.all()
+    if query:
+        tasks = tasks.filter(title__icontains=query)
+
+    context = {
+        'tasks': tasks,
+        'query': query or '',
+    }
+    return render(request, 'todo/index.html', context)
