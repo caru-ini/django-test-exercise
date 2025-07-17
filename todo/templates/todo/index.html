@@ -13,7 +13,12 @@
     <div class="container mx-auto max-w-2xl p-6">
       <h1 class="text-3xl font-bold text-gray-800 mb-4">Sample To Do Application</h1>
       <p class="text-gray-600 mb-6">You can submit tasks from the following form.</p>
-      
+      <form method="get" action="{% url 'index' %}">
+        <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+        <button type="submit">検索</button>
+      </form>
+      <br>
+
       <form action="{% url 'index' %}" method="post" class="bg-white rounded-lg shadow-md p-6 mb-8">
         {% csrf_token %}
         <div class="mb-4">
