@@ -38,9 +38,15 @@
       <div class="space-y-4">
         {% for task in tasks %}
         <div class="bg-white rounded-lg shadow-md p-5 border-l-4 border-[#5d8cb8]">
-          <h2 class="text-xl font-semibold mb-3">
-            <a href="{% url 'detail' task.id %}" class="text-[#5d8cb8] hover:text-[#4a7396] transition-colors duration-200">{{ task.title }}</a>
-          </h2>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-xl font-semibold">
+              <a href="{% url 'detail' task.id %}" class="text-[#5d8cb8] hover:text-[#4a7396] transition-colors duration-200">{{ task.title }}</a>
+            </h2>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <span class="text-lg">👁</span>
+              <span class="bg-gray-100 px-2 py-1 rounded-full font-medium">{{ task.view_count }}</span>
+            </div>
+          </div>
           <ul class="text-sm text-gray-600 space-y-1">
             <li><span class="font-medium">Posted at:</span> {{ task.posted_at }}</li>
             {% if task.due_at %} 
