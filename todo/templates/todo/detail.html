@@ -24,11 +24,11 @@
           <li><span class="font-medium text-gray-700">Status:</span> <span class="text-orange-600 font-medium">Not Completed</span></li>
           {% endif %}
         </ul>
-
         <div class="flex gap-4">
           <a href="{% url 'index' %}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors duration-200 font-medium">Top</a>
           <a href="{% url 'delete' task.id %}" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-200 font-medium">Delete</a>
-                     <a href="{% url 'update' task.id %}" class="bg-[#5d8cb8] text-white px-4 py-2 rounded-md hover:bg-[#4a7396] transition-colors duration-200 font-medium">Edit</a>
+          <a href="{% url 'update' task.id %}" class="bg-[#5d8cb8] text-white px-4 py-2 rounded-md hover:bg-[#4a7396] transition-colors duration-200 font-medium">Edit</a>
+          <a href="{% url 'close' task.id %}">Close</a>
         </div>
       </div>
     </div>
