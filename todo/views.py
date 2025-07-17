@@ -34,6 +34,9 @@ def detail(request, task_id):
     except Task.DoesNotExist:
         raise Http404("Task does not exist")
 
+    task.view_count += 1
+    task.save()
+
     context = {
         "task": task,
     }
