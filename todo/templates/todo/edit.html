@@ -6,26 +6,29 @@
     <title>To Do Application</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
-  <body>
-    <h1>Edit task</h1>
-    <p>You can edit tasks from the following form.</p>
-    <form action="{% url 'update' task.id%}" method="post">
-      {% csrf_token %}
-      <div>
-        <label for="titleInput">Title</label><br>
-        <input id="titleInput" name="title" type="text" placeholder="Input title" value="{{ task.title }}">
-      </div>
-      <div>
-        <label for="dueInput">Due at:</label><br>
-        <input id="dueInput" name="due_at" type="datetime-local" value="{{ task.due_at |date:"Y-m-d H:i" }}">
-      </div>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
-    <br>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto p-6">
+      <h1 class="text-3xl font-bold text-gray-800 mb-4">Edit task</h1>
+      <p class="text-gray-600 mb-6">You can edit tasks from the following form.</p>
+      
+      <form action="{% url 'update' task.id%}" method="post" class="bg-white rounded-lg shadow-md p-6 mb-8">
+        {% csrf_token %}
+        <div class="mb-4">
+          <label for="titleInput" class="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                     <input id="titleInput" name="title" type="text" placeholder="Input title" value="{{ task.title }}" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5d8cb8] focus:border-[#5d8cb8]">
+        </div>
+        <div class="mb-4">
+          <label for="dueInput" class="block text-sm font-medium text-gray-700 mb-2">Due at:</label>
+                     <input id="dueInput" name="due_at" type="datetime-local" value="{{ task.due_at |date:"Y-m-d H:i" }}" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5d8cb8] focus:border-[#5d8cb8]">
+        </div>
+        <div>
+                     <button type="submit" class="bg-[#5d8cb8] text-white px-4 py-2 rounded-md hover:bg-[#4a7396] transition-colors duration-200 font-medium">Submit</button>
+        </div>
+      </form>
+    </div>
   </body>
 
 </html>
