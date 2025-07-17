@@ -6,27 +6,31 @@
     <title>To Do Application</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
-  <body>
-    <h1>{{ task.title }}</h1>
-    <ul>
-      <li>Posted at: {{ task.posted_at }}</li>
-      {% if task.due_at %}
-      <li>Due at: {{ task.due_at }}</li>
-      {% endif %}
-      {% if task.completed %}
-      <li>Status: Completed</li>
-      {% else %}
-      <li>Status: Not Completed</li>
-      {% endif %}
-    </ul>
-
-    <div>
-      <a href="{% url 'index' %}">Top</a>
-        <a href="{% url 'delete' task.id %}">Delete</a>
-        <a href="{% url 'update' task.id %}">Edit</a>
-        <a href="{% url 'close' task.id %}">Close</a>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">{{ task.title }}</h1>
+        <ul class="text-gray-600 space-y-3 mb-6">
+          <li><span class="font-medium text-gray-700">Posted at:</span> {{ task.posted_at }}</li>
+          {% if task.due_at %}
+          <li><span class="font-medium text-gray-700">Due at:</span> {{ task.due_at }}</li>
+          {% endif %}
+          {% if task.completed %}
+          <li><span class="font-medium text-gray-700">Status:</span> <span class="text-green-600 font-medium">Completed</span></li>
+          {% else %}
+          <li><span class="font-medium text-gray-700">Status:</span> <span class="text-orange-600 font-medium">Not Completed</span></li>
+          {% endif %}
+        </ul>
+        <div class="flex gap-4">
+          <a href="{% url 'index' %}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors duration-200 font-medium">Top</a>
+          <a href="{% url 'delete' task.id %}" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-200 font-medium">Delete</a>
+          <a href="{% url 'update' task.id %}" class="bg-[#5d8cb8] text-white px-4 py-2 rounded-md hover:bg-[#4a7396] transition-colors duration-200 font-medium">Edit</a>
+          <a href="{% url 'close' task.id %}">Close</a>
+        </div>
+      </div>
     </div>
   </body>
 
